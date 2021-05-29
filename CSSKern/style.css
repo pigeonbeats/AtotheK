@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'testfont';  
+  src: url('data/wonkyCA.otf');
+}
+
+// this block of code is what loads the font file to be usable with CSS styles, since the font for elements is defined by CSS styles, we cannot use loadFont() or textFont() for them
