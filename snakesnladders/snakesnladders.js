@@ -43,7 +43,7 @@ function setup() {
   startingY = (0.1*height);
   yposition = startingY;
   align = "left";
-  noLoop();
+  noLoop(); // makes it stay on the welcome text until keyPressed()
   
 }
 function draw() {
@@ -52,7 +52,8 @@ function draw() {
 
 if (isLooping() == true) {  
   background('white');
- } // activate white bg when typing starts
+  
+ } // activate white bg when keyPressed() starts
  
   x1 = map(mouseX, 0, width, 0, 360);
   y1 = map(mouseY, 0, height, 0, 360);
@@ -114,11 +115,11 @@ function keyTyped(){
       
 // HORIZONTAL kern adjust for letters which don't left align with the others
        if (key == "a" || key == "A" || key == "s" || key == "S" || key == "z" || key == "Z") { 
-      xposition+=(0.09*fontSize);
+       xposition+=(0.05*fontSize);
       }
       
        if (key == "i" || key == "I") {
-         xposition+=(0.18*fontSize);
+         xposition+=(0.06*fontSize);
        }
        
 // THIS IS WHERE IT STARTS TO GET HECTIC
