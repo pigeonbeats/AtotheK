@@ -45,7 +45,7 @@ function setup() {
   startingY = (0.1*height);
   yposition = startingY;
   align = "left";
-  noLoop();
+  noLoop(); // makes it stay on the welcome text until keyPressed()
   
 }
 function draw() {
