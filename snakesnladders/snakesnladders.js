@@ -1,5 +1,7 @@
+// Many thanks to Karen-Ann Donnachie for her wigglyRandomLetters code that inspired the structure of the typing mechanism. 
+
 var snek, lastKey, fontSize, x1, y1, letterFill, align, startingX, startingY, xposition, yposition;
-var wigglyLetters = [];
+var typing = [];
 
 let alphabet = [" ","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
@@ -43,7 +45,7 @@ function setup() {
   startingY = (0.1*height);
   yposition = startingY;
   align = "left";
-  noLoop(); // makes it stay on the welcome text until keyPressed()
+  noLoop();
   
 }
 function draw() {
@@ -52,15 +54,14 @@ function draw() {
 
 if (isLooping() == true) {  
   background('white');
-  
- } // activate white bg when keyPressed() starts
+ } // activate white bg when typing starts
  
   x1 = map(mouseX, 0, width, 0, 360);
   y1 = map(mouseY, 0, height, 0, 360);
   letterfill = int((x1+y1)/2);
 
-  for (var i=0; i<wigglyLetters.length ; i++){
-    wigglyLetters[i].display();
+  for (var i=0; i<typing.length ; i++){
+    typing[i].display();
   }
 
 }
@@ -69,7 +70,7 @@ if (isLooping() == true) {
 
 function keyPressed(){
   if (keyCode === LEFT_ARROW){
-   wigglyLetters=[];
+   typing=[];
    startingX = (0.1*width);
   xposition = startingX;
   startingY = (0.1*height);
@@ -79,7 +80,7 @@ function keyPressed(){
   }
   
   if (keyCode === RIGHT_ARROW) {
-    wigglyLetters=[];
+    typing=[];
     startingX = (0.9*width);
   xposition = startingX;
   startingY = (0.1*height);
@@ -115,7 +116,7 @@ function keyTyped(){
       
 // HORIZONTAL kern adjust for letters which don't left align with the others
        if (key == "a" || key == "A" || key == "s" || key == "S" || key == "z" || key == "Z") { 
-       xposition+=(0.05*fontSize);
+      xposition+=(0.05*fontSize);
       }
       
        if (key == "i" || key == "I") {
@@ -432,7 +433,7 @@ function keyTyped(){
    }
    
    if (L.includes(key)) {
-     yposition-=(0.3*fontSize);
+     yposition-=(0.23*fontSize);
    }
    
    if (D.includes(key)) {
@@ -512,7 +513,7 @@ function keyTyped(){
    
     
     // generate new class properties
-    wigglyLetters.push(new Wiggle (xposition, yposition, fontSize, key, int(random(0, 100))));
+    typing.push(new typo (xposition, yposition, fontSize, key, int(random(0, 100))));
  
     // stores the newest key as the lastKey for the next letter
      lastKey=key;
@@ -542,7 +543,7 @@ function keyTyped(){
       
     // empties text if page gets full
        if (align == "left" && xposition>(0.9*width)) {
-         wigglyLetters=[];
+         typing=[];
          startingX=(0.1*width);
          xposition = startingX;
          lastKey = null;
@@ -550,7 +551,7 @@ function keyTyped(){
        
        if (align == "right" && xposition<(0.1*width)) {
          startingX=(0.9*width);
-         wigglyLetters=[];
+         typing=[];
          xposition = startingX;
          lastKey = null;
        }
@@ -558,7 +559,7 @@ function keyTyped(){
 } // bracket for alphabet.includes(key)
 } //bracket for keyTyped()
 
-class Wiggle {
+class typo {
  constructor(x, y, size, letter, colourseed){
    this.x= x;
    this.y= y;
