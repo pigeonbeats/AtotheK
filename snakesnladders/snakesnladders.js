@@ -1,4 +1,4 @@
-// Many thanks to Karen-Ann Donnachie for her wigglyRandomLetters code that inspired the structure of the typing mechanism. 
+// Many thanks to Karen ann Donnachie for her wigglyRandomLetters code that inspired the structure of the typing mechanism. 
 
 var snek, lastKey, fontSize, x1, y1, letterFill, align, startingX, startingY, xposition, yposition;
 var typing = [];
