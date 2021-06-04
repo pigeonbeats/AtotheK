@@ -115,9 +115,21 @@ function keyTyped(){
     if (alphabet.includes(key)) { 
       
 // HORIZONTAL kern adjust for letters which don't left align with the others
-       if (key == "a" || key == "A" || key == "s" || key == "S" || key == "z" || key == "Z") { 
+       if (key == "a" || key == "A"  || key == "z" || key == "Z") { 
       xposition+=(0.05*fontSize);
       }
+      
+      if (key == "s" || key == "S") {
+         xposition+=(0.015*fontSize);
+       }
+       
+      if (key == "m" || key == "M" || key == "w" || key == "W") {
+         xposition-=(0.03*fontSize);
+       }
+      
+      if (key == "t" || key == "T") {
+         xposition-=(0.05*fontSize);
+       }
       
        if (key == "i" || key == "I") {
          xposition+=(0.06*fontSize);
